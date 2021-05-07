@@ -2,7 +2,7 @@
 
 ## Structuration du module d'initiation aux NN
 
-**CONCEPTS
+**CONCEPTS**
 
 1. **Motivation pour l’apprentissage en général**
 
@@ -29,7 +29,7 @@ Il existe différents de systèmes de ML
 -	Des systèmes qui peuvent apprendre progressivement (online vs batch learning)
 -	Des systèmes qui fonctionnent en comparant des nouveaux points de données à des points de données connus (instance-based versus model-based learning).
 
-2. **Spécificité des réseaux de neurones
+2. **Spécificité des réseaux de neurones**
 
 Les oiseaux nous inspirés à créer l’avion. Et depuis, d'innombrables autres inventions ont été inspirées par la nature. Il semble logique, alors, de regarder l'architecture du cerveau pour s'inspirer de la façon de construire une machine intelligente. C'est l'idée clé qui a donné naissance aux réseaux de neurones artificiels (ANN).
 
@@ -49,7 +49,7 @@ Warren McCulloch et Walter Pitts ont proposé un modèle très simple du neurone
 
 Ils ont montré que même avec un modèle aussi simplifié, il est possible de construire un réseau de neurones artificiels qui calcule n'importe quelle proposition logique.
 
-3. **Présentation des architectures
+3. **Présentation des architectures**
 
 Warren McCulloch et Walter Pitts ont proposé un modèle très simple du neurone biologique, connu par la suite sous le nom de neurone artificiel : il possède une ou plusieurs entrées binaires (marche/arrêt) et une sortie binaire. 
 
@@ -57,14 +57,59 @@ Ces deux scientifiques ont montré que même avec un modèle aussi simplifié, i
 
 Vous pouvez facilement imaginer comment ces réseaux peuvent être combinés pour calculer des expressions complexes. 
 Le Perceptron est l'une des architectures ANN les plus simples, inventée en 1957 par Frank Rosenblatt. Il est basé sur un neurone artificiel légèrement différent appelé unité logique à seuil (TLU), ou parfois unité à seuil linéaire (LTU).
+
 ![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/perceptron.PNG)
 
+Cependant, il s'avère que certaines des limitations des perceptrons peuvent être éliminées en empilant plusieurs perceptrons. L'ANN qui en résulte est appelé Perceptron multicouche (MLP). En particulier, un MLP peut résoudre le problème XOR.
+
+Un MLP est composé d'une couche d'entrée, une ou plusieurs couches d'ULT, appelées couches cachées, et d'une couche finale d'ULT appelée couche de sortie. Les couches proches de la couche d'entrée sont généralement appelées les couches inférieures, et celles proches des sorties sont généralement appelées les couches supérieures.
+
+Lorsqu'un ANN contient une pile profonde de couches cachées, on l'appelle un réseau neuronal profond (DNN). Premièrement, les MLP peuvent être utilisés pour des tâches de régression. Si vous voulez prédire une seule valeur, vous n'avez besoin que d'un seul neurone de sortie : sa sortie est la valeur prédite. Pour une régression multivariée (c'est-à-dire pour prédire plusieurs valeurs à la fois), vous avez besoin d'un neurone de sortie par dimension de sortie.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/MLP.PNG)
+
+Les MLP peuvent également être utilisés pour des tâches de classification. Pour un problème de classification binaire, il suffit d'un seul neurone de sortie utilisant la fonction d'activation logistique : la sortie sera un nombre compris entre 0 et 1, que vous pouvez interpréter comme la probabilité estimée de la classe positive. Ils peuvent également gérer facilement les tâches de classification binaire multi-label Par exemple, vous pourriez avoir un système de classification d'e-mails qui prédit s'il s'agit d'un e-mail urgent ou non urgent.
+
+Un autre type de réseaux de neurones dit convolutifs (CNN) sont issus de l'étude du cortex visuel du cerveau et sont utilisés dans la reconnaissance d'images depuis les années 1980. L'élément constitutif le plus important d'un CNN est la couche convolutive.
+Les neurones de la première couche convolutive ne sont pas connectés à chaque pixel de l'image d'entrée, mais uniquement aux pixels situés dans leur champ récepteur.
+À son tour, chaque neurone de la deuxième couche convolutive est connecté uniquement aux neurones situés dans un petit rectangle de la première couche.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/CNN.PNG)
+
+Cette architecture permet au réseau de se concentrer sur de petites caractéristiques de bas niveau dans la première couche cachée, puis de les assembler en caractéristiques de plus haut niveau dans la couche cachée suivante, et ainsi de suite. Cette structure hiérarchique est courante dans les images du monde réel, et c'est l'une des raisons pour lesquelles les réseaux CNN fonctionnent si bien pour la reconnaissance d'images.
+
+4. **Principe d’optimisation**
+
+Une bonne compréhension du fonctionnement des choses peut aider à trouver rapidement le modèle approprié, le bon algorithme d'apprentissage à utiliser. La régression linéaire, l’un des modèles les plus simples qui soient peut être abordé de deux manières très différentes :
+-	Soit par l’utilisation d'une équation directe "à forme fermée" qui calcule directement les paramètres du modèle qui s'adaptent le mieux à l'ensemble d'apprentissage
+-	Soit par l'utilisation d'une approche d'optimisation itérative, appelée descente de gradient (GD).
+
+Nous porterons notre attention sur la seconde approche, celle de l’optimisation itérative. 
+La descente par gradient est un algorithme d'optimisation très générique capable de trouver des solutions optimales à un large éventail de problèmes. 
+
+L'idée générale de la descente par gradient est de modifier les paramètres de manière itérative afin de minimiser une fonction de coût. Supposons que vous soyez perdu en montagne dans un brouillard dense ; vous ne pouvez sentir que la pente du sol sous vos pieds. Une bonne stratégie pour atteindre rapidement le fond de la vallée consiste à descendre dans la direction de la pente la plus raide. C'est exactement ce que fait la descente par gradient.
+
+Un paramètre important de la descente par gradient est la taille des étapes, déterminée par l'hyperparamètre du taux d'apprentissage. Si le taux d'apprentissage est trop faible, l'algorithme devra passer par de nombreuses itérations.
+Les différents algorithmes de la Descente de gradient (GD):
+-	Descente de gradient par lots
+
+Pour mettre en œuvre la descente par gradient, vous devez calculer le gradient de la fonction de coût en fonction de chaque paramètre du modèle θj. En d'autres termes, vous devez calculer de combien la fonction de coût changera si vous modifiez θj juste un peu. C'est ce qu'on appelle une dérivée partielle. Le principal problème de la descente de gradient par lots est qu'elle utilise l'ensemble de l'apprentissage pour calculer les gradients à chaque étape, ce qui la rend très lente lorsque l'ensemble d'apprentissage est important.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/batch%20GD.jpg)
+
+-	Descente de gradient stochastique (aléatoire)
+L'algorithme de descente en gradient stochastique choisit simplement une instance aléatoire dans l'ensemble d'apprentissage à chaque étape et calcule les gradients en se basant uniquement sur cette instance unique. D'autre part, en raison de sa nature stochastique, cet algorithme est beaucoup moins régulier que l'algorithme de descente de gradient par lots : au lieu de décroître doucement jusqu'à atteindre le minimum, la fonction de coût va rebondir, ne décroissant qu'en moyenne.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/GD%20stochastic.PNG)
+
+-	Descente de gradient par mini-lots
+Cet algorithme est assez simple à comprendre. A chaque étape, la GD par mini-lots calcule les gradients sur de petits ensembles aléatoires d'instances appelés mini-lots. Le principal avantage de la GD mini-batch par rapport à la GD stochastique est que vous pouvez obtenir un gain de performance grâce à l'optimisation matérielle des opérations matricielles, en particulier lorsque vous utilisez des GPU.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/GD%20par%20mini%20lots.PNG)
 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+
 
 # Header 1
 ## Header 2
@@ -79,14 +124,3 @@ Syntax highlighted code block
 **Bold** and _Italic_ and `Code` text
 
 [Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dariusbd/projetnn101/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
