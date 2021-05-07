@@ -1,5 +1,7 @@
 # Neural Net 101
 
+[LEARNINGS]()
+
 ## Structuration du module d'initiation aux NN
 
 **CONCEPTS**
