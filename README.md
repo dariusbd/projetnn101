@@ -108,19 +108,26 @@ Cet algorithme est assez simple à comprendre. A chaque étape, la GD par mini-l
 ![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/GD%20par%20mini%20lots.PNG)
 
 
+**ASPECTS PRATIQUE**
+
+1. **Intro à Numpy**
 
 
 
-# Header 1
-## Header 2
-### Header 3
+2. **Représentation des données**
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+3. **Intro à pandas**
+
+
+
+4. **Intro deep learning**
+
+
+
+5. **Intro Computer Vision** 
+
+
 
 [Link](url) and ![Image](src)
