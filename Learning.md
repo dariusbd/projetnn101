@@ -1,5 +1,5 @@
-jjjjjjjj
-kkkkkkkkk
-
-
-jjjjjjjj
+ # Learning
+ - [Python]()
+ - [NN](nn.md)
+ - [Computer Vision]()
+ - [Audio Processing]()
