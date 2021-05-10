@@ -19,7 +19,7 @@
 
 - [Learning](Learning.md)
    - [Python]()
-   - [NN]()
+   - [NN](nn.md)
    - [Computer Vision]()
    - [Audio Processing]()
 
