@@ -17,7 +17,7 @@
      - [Blender]()
      - [Game Engines]()
 
-- [Learning](Learning.md)
+- [Learning]()
    - [Python]()
    - [NN](nn.md)
    - [Computer Vision]()
