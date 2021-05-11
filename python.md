@@ -94,7 +94,8 @@ Il est possible d’obtenir des listes en combinant list et range().
 
 numpy.arange() accepte des arguments qui ne sont pas entiers.
 > np.arange(0, 11*np.pi, np.pi)
-> ==> array([  0.        ,   3.14159265,   6.28318531,   9.42477796,
+
+> array([  0.        ,   3.14159265,   6.28318531,   9.42477796,
         12.56637061,  15.70796327,  18.84955592,  21.99114858,
         25.13274123,  28.27433388,  31.41592654])
 
@@ -102,5 +103,6 @@ numpy.arange() accepte des arguments qui ne sont pas entiers.
 
 numpy.linspace() permet d’obtenir un tableau 1D allant d’une valeur de départ à une valeur de fin avec un nombre donné d’éléments.
 > np.linspace(3, 9, 10)
-array([ 3.       ,  3.66666667,  4.33333333,  5.        ,  5.66666667,
+
+>array([ 3.       ,  3.66666667,  4.33333333,  5.        ,  5.66666667,
         6.33333333,  7.        ,  7.66666667,  8.33333333,  9.        ])
