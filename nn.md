@@ -3,6 +3,7 @@
 **CONCEPTS**
 
 1. **Motivation pour l’apprentissage en général**
+
 De nombreux articles ont démontré que le Machine Learning était capable de réalisations époustouflantes qu’aucune autre technique ne pouvait atteindre. Depuis quelques années maintenant, le Machine Learning (ML) a conquis le secteur : il est désormais au cœur de la magie des produits high-tech d'aujourd'hui, par exemple en classant les résultats de vos recherches sur Internet, en battant le champion du monde au jeu de Go, etc. Avant que vous ne le sachiez, il conduira votre voiture.
 
 Peut-être souhaitez-vous donner à votre robot maison un cerveau qui lui est propre Ou peut-être votre entreprise possède-t-elle des tonnes de données (journaux d'utilisateurs, données financières, etc.). Le ML peut vous aider par exemple à : Segmenter les clients et trouver la meilleure stratégie marketing pour chaque groupe, recommander des produits pour chaque client en fonction de ce que des clients similaires ont acheté, détecter les transactions susceptibles d'être frauduleuses, prévoir les revenus de l'année suivante.
