@@ -106,7 +106,8 @@ Nous savons que les tenseurs ont différents types de dimensions tels que la dim
 
 ![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/images/N-dimensional%20array.png)
 
-- Vecteurs
+- **Vecteurs**
+
 Les vecteurs sont des tenseurs unidimensionnels, et pour les manipuler, plusieurs opérations sont disponibles. Les opérations sur les vecteurs sont de différents types tels que l'opération mathématique, le produit scalaire et le linspace. Les vecteurs jouent un rôle essentiel dans le Deep Learning.
 Dans le réseau neuronal du Deep Learning, nous générons des points aléatoires à l'aide de vecteurs ou de tenseurs unidimensionnels. Les opérations suivantes sont effectuées sur le vecteur.
 Nous pouvons ajouter, soustraire, multiplier et diviser le tenseur d'un autre tenseur. Voici quelques opérations qui sont effectuées sur des vecteurs avec le résultat attendu.
