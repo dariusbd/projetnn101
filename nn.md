@@ -185,3 +185,97 @@ De la même manière que nous obtenons un tenseur 3-D, si certains de ces tenseu
 
 De la même manière, nous pouvons avoir des tenseurs de dimension plus élevée. Bien que les tenseurs jusqu'à 4 dimensions soient plus courants. C'est le type de tenseurs lorsque nous devons stocker des données avec encore une autre dimension. Les données vidéo peuvent être un exemple idéal où des tenseurs 5-D sont utilisés.
 Les tenseurs sont similaires aux ndarrays de NumPy, sauf qu'ils peuvent fonctionner sur des GPU ou d'autres accélérateurs matériels. En fait, les tenseurs et les tableaux NumPy peuvent souvent partager la même mémoire sous-jacente, ce qui élimine le besoin de copier les données (voir Bridge with NumPy). Les tenseurs sont également optimisés pour la différenciation automatique (nous y reviendrons plus tard dans la section Autograd).
+
+- **Plotting (matplotlib)**
+
+Matplotlib est probablement le package Python le plus utilisé pour les graphiques en 2D. Il fournit à la fois un moyen rapide de visualiser des données à partir de Python et des figures de qualité de publication dans de nombreux formats. Nous allons explorer Matplotlib en mode interactif en couvrant les cas les plus courants.
+
+**Pyplot**
+
+Pyplot fournit une interface procédurale à la librairie de plotting orientée objet de matplotlib. Son modèle est très proche de celui de Matlab. Par conséquent, la majorité des commandes de plotting dans pyplot ont des analogues Matlab avec des arguments similaires.
+Les commandes importantes sont expliquées à l'aide d'exemples interactifs.
+From import pyplot as plt
+
+**Simple Plot**
+
+Dans cette section, nous voulons dessiner les fonctions cosinus et sinus sur le même graphique. En partant des paramètres par défaut, nous allons enrichir la figure étape par étape pour la rendre plus agréable.
+La première étape consiste à obtenir les données pour les fonctions sinus et cosinus.
+import as numpy np
+X = np.linspace(-np.pi, np.pi, 256)
+C, S = np.cos(X), np.sin(X)
+X est maintenant un tableau numpy avec 256 valeurs allant de -π à +π (inclus). C, est le cosinus (256 valeurs) et S est le sinus (256 valeurs).
+
+**a) Plotting avec paramètres par défaut**
+
+Matplotlib est livré avec un ensemble de paramètres par défaut qui permettent de personnaliser toutes sortes de propriétés. Vous pouvez contrôler les valeurs par défaut de presque toutes les propriétés de Matplotlib : taille et dpi des figures, largeur, couleur et style des lignes, axes, propriétés des axes et de la grille, propriétés du texte et de la police, etc.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/images/plot1.PNG)
+
+import as numpy np
+import as matplotlib.pyplot plt
+X = np.linspace(-np.pi, np.pi, 256)
+C, S = np.cos(X), np.sin(X)
+plt.plot(X, C)
+plt.plot(X, S)
+plt.show()
+
+**b) Modification des couleurs et de la largeur des lignes**
+
+Dans un premier temps, nous voulons avoir le cosinus en bleu et le sinus en rouge et une ligne légèrement plus épaisse pour les deux. Nous allons également modifier légèrement la taille de la figure pour la rendre plus horizontale.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/images/plot2.PNG)
+
+...
+plt.figure(figsize=(10, 6), dpi=80)
+plt.plot(X, C, color="blue", linewidth=2.5, linestyle="-")
+plt.plot(X, S, color="red", linewidth=2.5, linestyle="-")
+...
+
+**c) Fixer des limites**
+
+Les limites actuelles de la figure sont un peu trop étroites et nous voulons faire un peu d'espace afin de voir clairement tous les points de données.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/images/plot3.PNG)
+
+...
+plt.xlim(X.min() * 1.1, X.max() * 1.1)
+plt.ylim(C.min() * 1.1, C.max() * 1.1)
+...
+
+**d) Réglage des ticks**
+
+Les ticks actuels ne sont pas idéaux car ils ne montrent pas les valeurs intéressantes (+/-π,+/-π/2) pour le sinus et le cosinus. Nous allons les modifier de telle sorte qu'ils ne montrent que ces valeurs.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/images/plot4.PNG)
+
+...
+plt.xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi])
+plt.yticks([-1, 0, +1])
+...
+
+**e) Définition des ticks labels**
+
+Les ticks sont maintenant correctement placés mais leur étiquette n'est pas très explicite. Nous pourrions deviner que 3,142 est π mais il serait préférable de le rendre explicite. Lorsque nous définissons les valeurs des tics, nous pouvons également fournir une étiquette correspondante dans la deuxième liste d'arguments. Notez que nous utiliserons latex pour permettre un bon rendu de l'étiquette.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/images/plot5.PNG)
+
+...
+plt.xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi], [r'$-\pi$', r'$-\pi/2$', r'$0$', r'$+\pi/2$', r'$+\pi$'])
+plt.yticks([-1, 0, +1], [r'$-1$', r'$0$', r'$+1$'])
+...
+
+**f) Déplacer les spines**
+
+Les épines sont les lignes reliant les repères des axes et marquant les limites de la zone de données. Elles peuvent être placées à des positions arbitraires et jusqu'à présent, elles se trouvaient sur le bord de l'axe. Nous allons changer cela puisque nous voulons les avoir au milieu. Comme ils sont au nombre de quatre (haut/bas/gauche/droite), nous allons éliminer ceux du haut et de droite en définissant leur couleur sur none et nous allons déplacer ceux du bas et de gauche à la coordonnée 0 dans l'espace des données.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/images/plot6.PNG)
+
+...
+ax = plt.gca() # gca stands for 'get current axis'
+ax.spines['right'].set_color('none')
+ax.spines['top'].set_color('none')
+ax.xaxis.set_ticks_position('bottom')
+ax.spines['bottom'].set_position(('data',0))
+ax.yaxis.set_ticks_position('left')
+ax.spines['left'].set_position(('data',0))
+...
