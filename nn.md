@@ -97,3 +97,90 @@ L'algorithme de descente en gradient stochastique choisit simplement une instanc
 Cet algorithme est assez simple à comprendre. A chaque étape, la GD par mini-lots calcule les gradients sur de petits ensembles aléatoires d'instances appelés mini-lots. Le principal avantage de la GD mini-batch par rapport à la GD stochastique est que vous pouvez obtenir un gain de performance grâce à l'optimisation matérielle des opérations matricielles, en particulier lorsque vous utilisez des GPU.
 
 ![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/GD%20par%20mini%20lots.PNG)
+
+2. **Représentation des données**
+
+En général, tous les systèmes actuels de Machine Learning utilisent des tenseurs comme structure de données de base. Les tenseurs sont fondamentaux dans ce. Même les données textuelles ou les données d'image sont converties en caractéristiques numériques pour être traitées.
+Les tenseurs sont une structure de données spécialisée qui ressemble beaucoup aux tableaux et aux matrices. Dans PyTorch, nous utilisons les tenseurs pour coder les entrées et les sorties d'un modèle, ainsi que les paramètres du modèle.
+Nous savons que les tenseurs ont différents types de dimensions tels que la dimension zéro, une dimension et multidimensionnelle.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/N-dimensional%20array.png)
+
+- Vecteurs
+Les vecteurs sont des tenseurs unidimensionnels, et pour les manipuler, plusieurs opérations sont disponibles. Les opérations sur les vecteurs sont de différents types tels que l'opération mathématique, le produit scalaire et le linspace. Les vecteurs jouent un rôle essentiel dans le Deep Learning.
+Dans le réseau neuronal du Deep Learning, nous générons des points aléatoires à l'aide de vecteurs ou de tenseurs unidimensionnels. Les opérations suivantes sont effectuées sur le vecteur.
+Nous pouvons ajouter, soustraire, multiplier et diviser le tenseur d'un autre tenseur. Voici quelques opérations qui sont effectuées sur des vecteurs avec le résultat attendu.
+
+import torch
+A=torch.tensor([1,2,3])
+B=torch.tensor([4,5,6])
+A+B
+B-2
+A*B
+A*2
+B/A
+
+Output:
+tensor([5, 7, 9])
+tensor([2, 3, 4])
+tensor([ 4, 10, 18])
+tensor([2, 4, 6])
+tensor([4, 2, 2])
+
+- **Matrices**
+
+Un tableau de vecteurs est une matrice, ou tenseur 2D. Une matrice a deux axes (souvent appelés lignes et colonnes). Vous pouvez interpréter visuellement une matrice comme une grille rectangulaire de nombres. Ceci est une matrice Numpy:
+
+Input : 
+x = np.array([[5, 78, 2, 34, 0],
+[6, 79, 3, 35, 1],
+[7, 80, 4, 36, 2]])
+x.ndim 
+Output : 
+2
+
+- **Tenseurs 3D et tenseurs de plus grande dimension **
+
+Si vous empaquetez de telles matrices dans un nouveau tableau, vous obtenez un tenseur 3D, que vous pouvez interpréter visuellement comme un cube de nombres. Voici un tenseur Numpy 3D:
+
+Input : 
+from numpy import array 
+T = array([
+  [ [1,2,3], [4,5,6], [7,8,9]],
+  [[11,12,13], [14,15,16], [17,18,19]],
+  [[21,22,23], [24,25,26], [27,28,29] ],
+  ]) 
+  print(T.shape) 
+  print("3D Tensor T is: ", T) 
+  print("Dimension of 3D Tensor T is: ", T.ndim)
+  
+  Output : 
+(3, 3, 3) 
+[[[ 1 2 3]
+[ 4 5 6]
+[ 7 8 9]]
+  
+[[11 12 13]
+[14 15 16]
+[17 18 19]]
+  
+  [[21 22 23] 
+  [24 25 26] 
+  [27 28 29]]] 
+  
+  Dimension of 3D Tensor T is : 3
+  
+Voyez le résultat de l'opération ci-dessus, pour comprendre la structure d'un tenseur 3D. Il s'agit d'une collection de matrices. Ainsi, contrairement à une matrice unique avec deux axes, un tenseur 3-D a trois axes.
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/T1.PNG)
+
+- **Tenseurs 4-D**
+
+De la même manière que nous obtenons un tenseur 3-D, si certains de ces tenseurs 3-D doivent être groupés, une autre dimension est créée, faisant du tenseur un tenseur 4-D. Ici, vous pouvez voir trois cubes sont matraqués. De tels tenseurs 4-D sont très utiles pour stocker des images pour la reconnaissance d'images dans le deep learning. 
+
+![Image](https://raw.githubusercontent.com/dariusbd/projetnn101/main/T2.png)
+
+- **Tenseurs**
+
+De la même manière, nous pouvons avoir des tenseurs de dimension plus élevée. Bien que les tenseurs jusqu'à 4 dimensions soient plus courants. C'est le type de tenseurs lorsque nous devons stocker des données avec encore une autre dimension. Les données vidéo peuvent être un exemple idéal où des tenseurs 5-D sont utilisés.
+Les tenseurs sont similaires aux ndarrays de NumPy, sauf qu'ils peuvent fonctionner sur des GPU ou d'autres accélérateurs matériels. En fait, les tenseurs et les tableaux NumPy peuvent souvent partager la même mémoire sous-jacente, ce qui élimine le besoin de copier les données (voir Bridge with NumPy). Les tenseurs sont également optimisés pour la différenciation automatique (nous y reviendrons plus tard dans la section Autograd).
