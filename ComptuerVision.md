@@ -57,5 +57,5 @@ Dans ce cours, vous allez :
 - maîtriser l'art de l'apprentissage par transfert pour améliorer vos modèles
 - utiliser l'augmentation des données pour étendre votre ensemble de données.
 
-https://www.kaggle.com/learn/computer-vision
+[Suite sur kaggle.com](https://www.kaggle.com/learn/computer-vision)
 
